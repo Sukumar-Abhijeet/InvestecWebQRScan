@@ -1636,9 +1636,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@openhealthnz-credentials/pdf-image-qr-scanner@link:../..":
-  version "0.0.0"
-  uid ""
+"@openhealthnz-credentials/pdf-image-qr-scanner@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@openhealthnz-credentials/pdf-image-qr-scanner/-/pdf-image-qr-scanner-1.0.2.tgz#cd3d0accb989c3c1378355c4c1083b311e34d7bc"
+  integrity sha512-GA4TQqWVoldNRLOru/Z+V2xIBFUkBueRz/QUfBC65UfkKeVg5J5d8exrQATGbI2ZMu+iaFFNV/Q7AEPKNqJ/oQ==
+  dependencies:
+    jsqr "^1.4.0"
+    pdfjs-dist "^2.12.313"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.4"
