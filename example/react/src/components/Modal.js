@@ -1,14 +1,17 @@
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, } from "@mui/material"
-import TappableButton from './TappableButton';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,Button } from "@mui/material"
 
 const CustomModal = ({
     closeCallback,
     visible,
     showIsVisible,
-    type = 'ERR'
+    type = 'ERR',
+    children,
+    title = 'QR SCAN VERIFICATION',
+    buttonText = 'Close'
 }) => {
 
     const handleClose = () => {
+        showIsVisible(false);
         closeCallback?.();
     }
 
@@ -16,18 +19,29 @@ const CustomModal = ({
         return type === 'ERR' ? 'Oops Verification Failed' : 'Payment Verified successfully'
     }
 
-    return(
-        <Dialog onClose={handleClose} open={visible}>
-        <DialogTitle>QR SCAN VERIFICATION</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+    const renderContent = () => {
+      return(
+        <>
+          {
+            children ? children : 
+            <DialogContentText id="alert-dialog-description">
             {getContent()}
           </DialogContentText>
+          }
+        </>
+      )
+    }
+
+    return(
+        <Dialog onClose={handleClose} open={visible}>
+        <DialogTitle>{title}</DialogTitle>
+        <DialogContent>
+          {renderContent()}
         </DialogContent>
         <DialogActions>
-            <TappableButton onClick={()=>showIsVisible(false)} >
-            Close
-            </TappableButton>
+            <Button onClick={handleClose} className='primaryBtn'>
+                {buttonText}
+            </Button>
         </DialogActions>
       </Dialog>
     )

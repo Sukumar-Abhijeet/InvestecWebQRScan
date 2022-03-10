@@ -1,31 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { Button, Input } from "@mui/material";
+import { Box } from "@mui/system";
 
-import styled from "styled-components";
-
-const StyledFileUploader = styled.label`
-	display: block;
-	border: 1px solid #4caf50;
-	display: inline-block;
-	padding: 0.5rem 1rem;
-	font-size: 1rem;
-	cursor: pointer;
-	color: #4caf50;
-	transition: all 0.3s ease-in-out;
-	margin-bottom : 20px;
-	&:hover {
-		background-color: #4caf50;
-		color: #fff;
-	}
-	&:active {
-		transform: translateY(2px);
-	}
-`;
-
-const StyledFileName = styled.span`
-	display: block;
-	font-size: 1rem;
-	margin-bottom: 1rem;
-`;
 
 /**
  * ImageUploader Success callback.
@@ -73,21 +49,18 @@ export default function ImageUploader({ onFileSelectSuccess, onFileSelectError }
 	};
 
 	return (
-		<div className="file-uploader">
-			<StyledFileName style={{color:'red'}}>
-				{fileName}
-				{fileName === "" && `Supports: ${supportedFileEnds}`}
-			</StyledFileName>
-
-			<StyledFileUploader>
-				<input
-					style={{ display: "none" }}
-					type="file"
-					onChange={handleFileInput}
-					accept={supportedFiles.join(",")}
-				/>
-				Choose File
-			</StyledFileUploader>
-		</div>
+		<Box component="label"  sx={{ display: 'block', width: '100%' }} htmlFor="contained-button-file">
+			<Input
+				id="contained-button-file"
+				onChange={handleFileInput}
+				accept={supportedFiles.join(",")}
+				type="file"
+				sx={{ display: 'none' }}
+			/>
+			<Button className='secondaryBtn' component="span" fullWidth>
+				{'Upload a FILE'}
+			</Button>
+		</Box>
+			
 	);
 }

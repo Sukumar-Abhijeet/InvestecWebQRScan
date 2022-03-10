@@ -1,40 +1,38 @@
 
 
-import React from "react";
+import React,{useEffect} from "react";
 
 import "./App.css";
-import CameraScanner from "./Scanners/Camera_Scanner";
-import PdfQrScanner from "./Scanners/Pdf_Qr_Scanner";
 import Box from '@mui/material/Box';
-import { Grid } from "@mui/material";
+import LOGO from './assets/logo.svg'
+import { Container } from "@mui/material";
+import Card from './components/Card'
+
+import {investec} from '@investec/app-store-sdk';
 
 function App() {
-	return (
-		<Box sx={{
-			textAlign: 'center',
-			backgroundColor: '#282c34',
-			minHeight: '100vh',
-			display: 'flex',
-			flexDirection: 'row',
-			alignItems: 'center',
-			justifyContent: 'center',
-			color: 'white',
-		}}>
-		<Box>
-			<Grid container spacing={2}>
-				<Grid sm={6} md={6} xs={12} item>
-					<PdfQrScanner />
-				</Grid>
-				<Grid sm={6} md={6} xs={12} item>
-					<CameraScanner />
-				</Grid>
-				
-			</Grid>
-		</Box>
 
+	useEffect(()=>{
+		investec.pbsa.client.get()
+		.then((res) => { 
+			console.log('res',res);
+		 });
+	},[])
+
+	return (
+		<Container>
+		<Box height={'100vh'} display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
 			
+			<Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+				<h1 className="title">{'PAYMENT VALIDATION'}</h1>
+				<h4 className="subTitle">{'Validate your payment via QR scanner'}</h4>
+				
+				<Card />
+				<img className="img" src={LOGO} alt="logo"/>
+			</Box>
+			</Box>
 			
-		</Box>
+		</Container>
 	);
 }
 

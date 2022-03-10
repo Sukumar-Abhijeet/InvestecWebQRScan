@@ -14,22 +14,112 @@
   color : black
 }
 
-.card{
-  display: flex;
-  background-color:powderblue;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  align-self: center;
-  width: 400px;
-  height: 500px;
-  border-radius: 6px;
-  margin-right: 30px;
-}
-
 .Result-box{
   font-size: "0.4rem";
   margin-top:20px;
   color: black;
+}
+
+.title{
+  font-family: 'Raleway', sans-serif;
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.subTitle{
+  font-family: Raleway;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #858585;
+  margin-bottom: 60px;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  margin-top: -100px;
+  z-index: 1;
+  
+}
+
+.primaryBtn{
+  height: 43px;
+  width: 100%;
+  border-radius: 6px !important;
+  background: #6C63FFCC !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.secondaryBtn {
+  height: 43px;
+  width: 100%;
+  border-radius: 6px !important;
+  border: 1px solid #6C63FF !important;
+  color: #6C63FF !important;
+  font-weight: 500 !important;
+}
+
+.card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0px 0px 48px 0px #0000001A;
+  padding: 18px;
+  margin: 18px;
+  z-index: 2;
+}
+
+.cardLogo{
+  padding: 12px;
+}
+
+.cardTitle{
+  font-family: Raleway;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  min-width: 320px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.cardSecondaryText{
+  font-family: Raleway;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0em;
+}
+
+@media screen and (max-width: 600px) {
+  .title{
+    font-size: 27px;
+  }
+  
+  .subTitle{
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .img {
+    margin-top: 20px;
+  }
+  .cardTitle{
+    min-width: 250px;
+  }
 }

@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { QrReader } from 'react-qr-reader';
+import { Button} from '@mui/material';
 import CustomModal from '../../components/Modal';
-import TappableButton from '../../components/TappableButton';
 
 const CameraScanner = () => {
     const [startScan, setStartScan] = useState(false);
     const [qrResult, setQrResult] = useState(null);
     const [visible, showIsVisible] = useState(false);
+    const [cameraModal, setCameraModal] = useState(false);
 
     const scanControlling = () => {
       setStartScan(!startScan)
       setQrResult('');
+    }
+
+    const validateResult = (result) => {
+      setStartScan(false);
+      showIsVisible(true);
+      setQrResult(result);
     }
 
     const modalProps = {
@@ -18,7 +25,16 @@ const CameraScanner = () => {
       showIsVisible
     }
 
+    const cameraModalProps = {
+      visible : cameraModal,
+      showIsVisible : setCameraModal,
+      hideAll : true,
+      title : 'Camera QR Detection'
+    }
+
     return (
+      <>
+      <CustomModal {...cameraModalProps}>
         <div className='card'>
             {
               startScan && 
@@ -26,26 +42,26 @@ const CameraScanner = () => {
                   <QrReader
                       scanDelay={2000}
                       onResult={(result, error) => {
-                          if (!!result) {
-                            setStartScan(false);
-                            showIsVisible(true);
-                            setQrResult(result);
-                          }
+                          if (!!result) validateResult(result)
                       }}
                       style={{ width: '400px', height: '400px' }}
                   />
               </div>
             }
             <p className="App-header">CAMERA</p>
-            <TappableButton onClick={scanControlling}>
-                {startScan ? 'Stop Camera Scan' : 'Start Camera Scan'}
-            </TappableButton>
-            <span className="Result-box">
+            <Button onClick={scanControlling} className='secondaryBtn'>
+            {startScan ? 'Stop Scan' : 'Start Scan'}
+            </Button>
+            {/* <span className="Result-box">
 				    {qrResult ? qrResult.text : ''}
-			      </span>
+			      </span> */}
             <CustomModal {...modalProps} />
         </div>
-
+        </CustomModal>
+        <Button onClick={()=>setCameraModal(true)} className='primaryBtn'>
+                {'Open camera'}
+        </Button>
+        </>
     );
 };
 
