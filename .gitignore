@@ -17,4 +17,4 @@ flycheck_*
 # !.yarn/sdks
 # !.yarn/versions
 coverage
-example/react/node_modules/
+node_modules/
