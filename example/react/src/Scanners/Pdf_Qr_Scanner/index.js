@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { scanFile } from "@openhealthnz-credentials/pdf-image-qr-scanner";
 import ImageUploader from "../../components/FileUploader";
 import CustomModal from "../../components/Modal";
+import {investec} from '@investec/app-store-sdk';
 
 const PdfQrScanner = () => {
 	const [resultText, setResultText] = useState("");
@@ -13,7 +14,13 @@ const PdfQrScanner = () => {
 		setResultText("");
 		try {
 			const qrCode = await scanFile(selectedFile);
-			showIsVisible(true);
+			
+			//@TODO : Pass the result to the required sdk and set the type for the modal to show success or failed.
+			// investec.pbsa.client.get()
+			// .then((res) => { 
+			//   console.log('res',res);
+			// });
+
 			setResultText(qrCode || "No QR code found");
 		} catch (e) {
 			if (e?.name === "InvalidPDFException") {

@@ -8,16 +8,16 @@ import LOGO from './assets/logo.svg'
 import { Container } from "@mui/material";
 import Card from './components/Card'
 
-// import {investec} from '@investec/app-store-sdk';
+import {investec} from '@investec/app-store-sdk';
 
 function App() {
 
-	// useEffect(()=>{
-	// 	investec.pbsa.client.get()
-	// 	.then((res) => { 
-	// 		console.log('res',res);
-	// 	 });
-	// },[])
+	useEffect(()=>{
+		investec.pbsa.client.get()
+		.then((res) => { 
+			console.log('res',res);
+		 });
+	},[])
 
 	return (
 		<Container>

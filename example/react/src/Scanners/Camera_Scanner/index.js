@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { QrReader } from 'react-qr-reader';
 import { Button} from '@mui/material';
 import CustomModal from '../../components/Modal';
+import {investec} from '@investec/app-store-sdk';
 
 const CameraScanner = () => {
     const [startScan, setStartScan] = useState(false);
@@ -15,6 +16,13 @@ const CameraScanner = () => {
     }
 
     const validateResult = (result) => {
+
+      //@TODO : Pass the result to the required sdk and set the type for the modal to show success or failed.
+      // investec.pbsa.client.get()
+      // .then((res) => { 
+      //   console.log('res',res);
+      // });
+
       setStartScan(false);
       showIsVisible(true);
       setQrResult(result);
@@ -52,9 +60,6 @@ const CameraScanner = () => {
             <Button onClick={scanControlling} className='secondaryBtn'>
             {startScan ? 'Stop Scan' : 'Start Scan'}
             </Button>
-            {/* <span className="Result-box">
-				    {qrResult ? qrResult.text : ''}
-			      </span> */}
             <CustomModal {...modalProps} />
         </div>
         </CustomModal>
